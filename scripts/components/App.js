@@ -1,5 +1,6 @@
 import React from 'react';
-global.$ = require('jquery')
+import $ from 'jquery';
+window.$ = $;
 import Navigation from './Navigation';
 
 var App = React.createClass({
