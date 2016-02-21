@@ -1,0 +1,17 @@
+body {
+	background-color: #e3e3e6;
+}
+
+#main {
+	margin: 0 auto;
+}
+
+.navigation {
+	width: 960px;
+	font: 18px sans-serif; 
+	margin: auto;
+}
+
+.navigation ul {
+
+}
