@@ -9,8 +9,16 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback');
 
+var stylus = require('gulp-stylus');
+var autoprefixer = require('gulp-autoprefixer');
+
 gulp.task('styles', function(){
-	return reload();
+
+	gulp.src('css/style.styl')
+		.pipe(stylus())
+		.pipe(autoprefixer())
+		.pipe(gulp.dest('./build/css'))
+		.pipe(reload({stream: true}))
 });
 
 gulp.task('browser-sync', function(){
@@ -61,7 +69,7 @@ gulp.task('scripts', function(){
 	return buildScripts('main.js', false);
 });
 
-gulp.task('default', ['scripts', 'browser-sync'], function(){
-	gulp.watch('./build/css/**/*', function(){reload()});
+gulp.task('default', ['styles', 'scripts', 'browser-sync'], function(){
+	gulp.watch('css/**/*', ['styles']);
 	return buildScripts('main.js', true);
 });
